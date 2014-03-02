@@ -6,10 +6,9 @@ if not pygame.font: print ('Warning, fonts disabled')
 if not pygame.mixer: print ('Warning, sound disabled')
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]
-data_dir = os.path.join(main_dir, 'data')
 
 def load_image(name): #Used to load the cursor and Toad image files
-    fullname = os.path.join(data_dir, name)
+    fullname = os.path.join(main_dir, name)
     try:
         image = pygame.image.load(fullname)
     except pygame.error:
@@ -20,7 +19,7 @@ def load_image(name): #Used to load the cursor and Toad image files
 def load_sound(name): #Used to load the Toad's noises
     if not pygame.mixer or not pygame.mixer.get_init():
         return NoneSound()
-    fullname = os.path.join(data_dir, name)
+    fullname = os.path.join(main_dir, name)
     try:
         sound = pygame.mixer.Sound(fullname)
     except pygame.error:
@@ -150,7 +149,7 @@ def main():
                     	surface = pygame.image.load("banner.png")
                     	coin = pygame.image.load("coin.png")
                     	font = pygame.font.Font(None, 36)
-                    	text = font.render("x" + str(score), 1, (255, 255, 255))
+                    	text = font.render("x" + str(score), 1, (255, 0, 0))
                     	textpos = (60, 10)
                     	bannerpos = (-25, -10)
                     	coinpos = (20, 8)
